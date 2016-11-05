@@ -5,6 +5,7 @@ use HTTP::Request::Common;
 use HTTP::Response;
 use Data::Dumper;
 use Getopt::Long;
+use File::Basename qw(basename dirname);
 
 sub usage{
     my $usage = << "USAGE";
@@ -87,6 +88,7 @@ while(1){
 	my $stat2 = get_map_html($job_id, $prefix, $outdir);
 	
     if($stat == 0 && $stat2 == 0){
+		&get_K_anno("$outdir/$prefix\_query.ko", $prefix, $outdir);
         print "all jobs are done! Check result:\n";
         print "$outdir/$prefix\_query.ko";
         last;
@@ -95,6 +97,37 @@ while(1){
         sleep 30;
     }
     $i++;
+}
+
+sub get_K_anno{
+	my ($q_ko_f, $prefix, $outdir) = @_;
+	my $q_ko_f_b = basename($q_ko_f);
+	
+	`cp $q_ko_f $outdir/$q_ko_f_b.bk`;
+	
+	open IN,"$outdir/$q_ko_f_b.bk" || die $!;
+	open OUT,">","$outdir/$prefix\_query.ko" || die $!;
+	my $browser = LWP::UserAgent->new();
+	while(<IN>){
+		chomp;
+		my @t = split /\t/;
+		if(scalar(@t) > 1){
+			my $url = "http://rest.kegg.jp/find/ko/$t[1]";
+			my $response = $browser->get($url);
+			my $kanno = "NULL";
+			if($response->content eq ""){
+				print OUT "$t[0]\t$t[1]\t$kanno\n";
+			}else{
+				my @anno = split /\t/,$response->content;
+				$kanno = $anno[1];
+				print OUT "$t[0]\t$t[1]\t$kanno";
+			}
+		}else{
+			print OUT "$t[0]\n";
+		}
+	}
+	close IN;
+	close OUT;
 }
 
 sub get_queryko{

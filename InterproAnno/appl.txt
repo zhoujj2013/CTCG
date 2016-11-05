@@ -1,0 +1,44 @@
+Applications	STRING
+A number of different protein sequence applications are launched. These applications search against specific databases and have preconfigured cut off thresholds.
+ProDom	default
+	BlastProDom
+	description	Scans the families in the ProDom database. ProDom is a comprehensive set of protein domain families automatically generated from the UniProtKB/Swiss-Prot and UniProtKB/TrEMBL sequence databases using psi-blast. In InterProScan the blastpgb program is used to scan the database. BLASTPGP performs gapped blastp searches and can be used to perform iterative searches in PSI-BLAST and PHI-BLAST mode.
+PRINTS	default
+	FPrintScan
+	description	Scans against the fingerprints in the PRINTS database. These fingerprints are groups of motifs that together are more potent than single motifs by making use of the biological context inherent in a multiple motif method.
+PIRSF	default
+	HMMPIR
+	description	Scans the hidden markov models (HMMs) that are present in the PIR Protein Sequence Database (PSD) of functionally annotated protein sequences, PIR-PSD.
+PfamA	default
+	HMMPfam
+	description	Scans the hidden markov models (HMMs) that are present in the PFAM Protein families database.
+SMART	default
+	HMMSmart
+	description	Scans the hidden markov models (HMMs) that are present in the SMART domain/domain families database.
+TIGRFAM	default
+	HMMTigr
+	description	Scans the hidden markov models (HMMs) that are present in the TIGRFAMs protein families database.
+PrositeProfiles	default
+	ProfileScan
+	description	Scans against PROSITE profiles. These profiles are based on weight matrices and are more sensitive for the detection of divergent protein families.
+HAMAP	default
+	HAMAP
+	description	Scans against HAMAP profiles. These profiles are based on weight matrices and are more sensitive for the detection of divergent bacterial, archaeal and plastid-encoded protein families.
+PrositePatterns	default
+	PatternScan
+	description	PatternScan is a new version of the PROSITE pattern search software which uses new code developed by the PROSITE team.
+SuperFamily	default
+	SuperFamily
+	description	SUPERFAMILY is a library of profile hidden Markov models that represent all proteins of known structure.
+SignalP	default
+	SignalPHMM
+TMHMM	default
+	TMHMM
+Panther	default
+	HMMPanther
+Gene3d	default
+	Gene3D
+Phobius	default
+	Phobius
+Coils	default
+	Coils

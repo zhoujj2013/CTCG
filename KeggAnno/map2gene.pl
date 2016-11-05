@@ -15,6 +15,10 @@ my ($maphtml, $ko, $prefix) = @ARGV;
 # read query K ortholog gene annotaiton by kaas
 my @ko;
 my %k2gene;
+
+# the store k annotation
+my %koanno;
+
 open IN,"$ko" || die $!;
 while(<IN>){
 	chomp;
@@ -22,6 +26,7 @@ while(<IN>){
 	next if(scalar(@t) < 2);
 	push @{$k2gene{$t[1]}},$t[0];
 	push @ko,\@t;
+	$koanno{$t[1]} = $t[2];
 }
 close IN;
 # create k to gene file
@@ -29,7 +34,10 @@ open OUT,">","./$prefix.k2gene.txt" || die $!;
 foreach my $k (keys %k2gene){
 	print OUT "$k\t";
 	print OUT scalar(rm_dup($k2gene{$k}));
-	print OUT "\t";
+	
+	# print out the K annotation
+	print OUT "\t$koanno{$k}\t";
+	
 	print OUT join "\t",rm_dup($k2gene{$k});
 	print OUT "\n";
 }
