@@ -57,3 +57,8 @@ Comprehensive Tool Kit for Comparative Genomics
 
 	There is no very good software.
 
+## motif analysis
+
+	homer http://homer.salk.edu/homer/ngs/
+	weblogo http://weblogo.threeplusone.com/
+	
