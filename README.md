@@ -62,3 +62,7 @@ Comprehensive Tool Kit for Comparative Genomics
 	homer http://homer.salk.edu/homer/ngs/
 	weblogo http://weblogo.threeplusone.com/
 	
+## synteny analysis
+
+	genomicus http://www.genomicus.biologie.ens.fr/genomicus-86.01/cgi-bin/search.pl
+	
