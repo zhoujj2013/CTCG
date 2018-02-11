@@ -54,6 +54,7 @@ Comprehensive Tool Kit for Comparative Genomics
 	jmol
 
 ## protein interaction
-
+	
+	Foldit https://fold.it/portal/
 	There is no very good software.
 
